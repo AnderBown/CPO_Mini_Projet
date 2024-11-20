@@ -37,15 +37,4 @@ public class CelluleLumineuse {
         return this.etat ? "X" : "O";
     }
 
-    public static void main(String[] args) {
-        CelluleLumineuse cellule = new CelluleLumineuse();
-        System.out.println(cellule); 
-        
-        cellule.activerCellule();
-        System.out.println(cellule); 
-        
-        cellule.eteindreCellule();
-        System.out.println(cellule);
-    }
-
 }

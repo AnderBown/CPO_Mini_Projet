@@ -14,10 +14,14 @@ public class LightOff_MINGFU_version_console {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        System.out.println("hello");
-        System.out.println("hello");
-        System.out.println("hello");
+        CelluleLumineuse cellule = new CelluleLumineuse();
+        System.out.println(cellule); 
+        
+        cellule.activerCellule();
+        System.out.println(cellule); 
+        
+        cellule.eteindreCellule();
+        System.out.println(cellule);
     }
     
 }
