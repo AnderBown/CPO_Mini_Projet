@@ -19,10 +19,10 @@ public class LightOff_MINGFU_version_console {
         System.out.println("Bienvenue dans le jeu LightOff !");
         // Demander à l'utilisateur la taille de la grille
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Veuillez indiquer les dimentions de la grille ");
-        System.out.print("Entrez le nombre de lignes : ");
+        System.out.println("Veuillez indiquer les dimentions de la grille ");
+        System.out.println("Entrez le nombre de lignes : ");
                 int nbLignes = scanner.nextInt();
-        System.out.print("Entrez le nombre de colonnes : ");
+        System.out.println("Entrez le nombre de colonnes : ");
                 int nbColonnes = scanner.nextInt();
         // Créer une nouvelle partie avec la taille de grille donnée
         Partie partie = new Partie(nbLignes, nbColonnes);
