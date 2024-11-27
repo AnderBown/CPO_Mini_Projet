@@ -54,16 +54,8 @@ public class Partie {
             }
             //fin generation grille et selection cellules
             
-            // Activer la cellule sélectionnée et ses voisines
-            System.out.println("Activation de la cellule et de ses voisines...");
-            for (int i = Math.max(0, nbLignes - 1); i <= Math.min(grille.nbLignes - 1, nbLignes + 1); i++) {
-                grille.matriceCellules[i][nbColonnes].activerCellule();
-            }
-            for (int j = Math.max(0, nbColonnes - 1); j <= Math.min(grille.nbColonnes - 1, nbColonnes + 1); j++) {
-                grille.matriceCellules[nbLignes][j].activerCellule();
-            }
-            grille.matriceCellules[nbLignes][nbColonnes].activerCellule();
-            System.out.println(grille);
+            // MODIF SELECTION 
+            grille.activerEntourageCellules(grille, nbLignes, nbColonnes);
             
             // Incrémenter le compteur de coups
             nbCoups++;
