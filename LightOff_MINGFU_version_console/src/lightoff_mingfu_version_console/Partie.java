@@ -11,29 +11,6 @@ import java.util.Scanner;
  * @author AnderBown
  */
 public class Partie {
-    /** DEMANDE LES VARIABLES UTILISATEURS LIGNE: x COL: J
-     * 
-     */
-/*int x;  //choix de lutiilsateur 
-int y;  //choix de lutiilsateur 
-int maxX;   // choix de lutiilsateur Valeur maximale de x/ ou encore valeur max de la taille du tableau
-int maxY;   // choix de lutiilsateur Valeur maximale de x/ ou encore valeur max de la taille du tableau
-GrilleDeJeu grille;
-
-// Vérification des bornes de x
-    public void lancerPartie(){
-    if (x >= 2 && x <= maxX ) {
-        for (int i = x - 1; i <= x + 1; i++) { //boucle pour les changements
-            for (int j = y - 1; j <= y + 1; j++) {
-                grille.matriceCellules[i][j].activerCellule(); //active la cellule demandee
-                System.out.println("Valeur de i : " + i); //sert a rien
-            }
-        }
-    } else {
-        System.out.println("x est hors des limites autorisees (2 < x < " + maxX + ").");
-    }
-    }
-    */
     private GrilleDeJeu grille; // Référence à la grille de jeu
     private int nbCoups;        // Nombre de coups joués
 
@@ -44,10 +21,10 @@ GrilleDeJeu grille;
     }
 
     // Méthode pour initialiser la partie
-    public void initialiserPartie() {
+    public void initialiserPartie(int difficulte) {
         System.out.println("Initialisation de la grille...");
-        grille.melangerMatriceAleatoirement(10); // Mélange la grille avec 10 tours
-        System.out.println("Grille initialisee !");
+        grille.melangerMatriceAleatoirement(difficulte); // Mélange la grille avec 10 tours
+        System.out.println("Grille melangee !");
         System.out.println(grille);
     }
 
@@ -56,33 +33,41 @@ GrilleDeJeu grille;
         Scanner scanner = new Scanner(System.in);
         
 
-        // Créer une nouvelle grille avec les dimensions données
+        // Créer une nouvelle grille avec INPUT user
         
         System.out.println("Bienvenue dans le jeu LightOff !");
-        initialiserPartie();
+        
+        System.out.print("Veuillez indiquer les dimentions de la grille ");
+        System.out.print("Entrez le nombre de lignes : ");
+                int nbLignes = scanner.nextInt();
+        System.out.print("Entrez le nombre de colonnes : ");
+                int nbColonnes = scanner.nextInt();
+        System.out.print("Veuillez indiquer la difficulte souhaite");
+                int difficulte = scanner.nextInt();
+        grille = new GrilleDeJeu(nbLignes, nbColonnes);
+        initialiserPartie(difficulte);
 
         while (!grille.cellulesToutesEteintes()) {
-            // Afficher l'état actuel de la grille
-            System.out.println("Etat actuel de la grille :");
-            System.out.println(grille);
             
             System.out.print("Entrez le numero de la ligne : ");
-                int ligne = scanner.nextInt();
+                nbLignes = scanner.nextInt();
             System.out.print("Entrez le numero de la colonne : ");
-                int colonne = scanner.nextInt();
+                nbColonnes = scanner.nextInt();
 
             // Vérifier si les coordonnées sont valides
-            do  
+            while (nbLignes < 0 || nbLignes >= grille.nbLignes || nbColonnes < 0 || nbColonnes >= grille.nbColonnes) 
             {
                 System.out.println("Coordonnees invalides ! Veuillez reessayer.");
                 // Demander au joueur une ligne et une colonne
                 System.out.print("Entrez le numero de la ligne : ");
-                ligne = scanner.nextInt();
+                nbLignes = scanner.nextInt();
                 System.out.print("Entrez le numero de la colonne : ");
-                colonne = scanner.nextInt();
-            } while (ligne < 0 || ligne >= grille.nbLignes || colonne < 0 || colonne >= grille.nbColonnes);
+                nbColonnes = scanner.nextInt();
+            }
             
-            grille = new GrilleDeJeu(ligne, colonne);
+            
+            
+            //fin generation grille et selection cellules
             
             // Activer la cellule sélectionnée et ses voisines
             System.out.println("Activation de la cellule et de ses voisines...");
