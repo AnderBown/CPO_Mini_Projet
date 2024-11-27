@@ -106,7 +106,7 @@ GrilleDeJeu grille;
             
             // Incrémenter le compteur de coups
             nbCoups++;
-            System.out.println("Nombre de coups joues : " + nbCoups);
+            System.out.println("Nombre de coups joues : " + nbCoups + 1);
         }
 
         // Toutes les cellules sont éteintes, le joueur a gagné
