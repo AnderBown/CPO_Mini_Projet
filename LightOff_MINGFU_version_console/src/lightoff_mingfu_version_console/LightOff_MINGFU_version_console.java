@@ -29,6 +29,5 @@ public class LightOff_MINGFU_version_console {
         
         partie.lancerPartie(nbLignes, nbColonnes);
         scanner.close();
-    }
-    
+    } 
 }
