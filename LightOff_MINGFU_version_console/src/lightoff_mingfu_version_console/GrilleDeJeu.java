@@ -74,10 +74,10 @@ public class GrilleDeJeu {
         
         matriceCellules[ligne][colonne].activerCellule();
         
-        if (ligne > 0) matriceCellules[ligne - 1][colonne].activerCellule(); // 上
-        if (ligne < nbLignes - 1) matriceCellules[ligne + 1][colonne].activerCellule(); // 下
-        if (colonne > 0) matriceCellules[ligne][colonne - 1].activerCellule(); // 左
-        if (colonne < nbColonnes - 1) matriceCellules[ligne][colonne + 1].activerCellule(); // 右
+        if (ligne > 0) matriceCellules[ligne - 1][colonne].activerCellule(); 
+        if (ligne < nbLignes - 1) matriceCellules[ligne + 1][colonne].activerCellule(); 
+        if (colonne > 0) matriceCellules[ligne][colonne - 1].activerCellule(); 
+        if (colonne < nbColonnes - 1) matriceCellules[ligne][colonne + 1].activerCellule(); 
     }
 
     // Activer une ligne spécifique
@@ -126,7 +126,7 @@ public class GrilleDeJeu {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("   ");
+        sb.append("  ");
         for (int j = 0; j < nbColonnes; j++) {
             sb.append("| ").append(j).append(" ");
         }
