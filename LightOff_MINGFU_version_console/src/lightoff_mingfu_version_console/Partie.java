@@ -55,14 +55,8 @@ GrilleDeJeu grille;
     public void lancerPartie() {
         Scanner scanner = new Scanner(System.in);
         
-        // Demander à l'utilisateur la taille de la grille
-        System.out.print("Entrez le nombre de lignes de la grille : ");
-        int nbLignes = scanner.nextInt();
-        System.out.print("Entrez le nombre de colonnes de la grille : ");
-        int nbColonnes = scanner.nextInt();
 
         // Créer une nouvelle grille avec les dimensions données
-        grille = new GrilleDeJeu(nbLignes, nbColonnes);
         
         System.out.println("Bienvenue dans le jeu LightOff !");
         initialiserPartie();
@@ -71,19 +65,25 @@ GrilleDeJeu grille;
             // Afficher l'état actuel de la grille
             System.out.println("Etat actuel de la grille :");
             System.out.println(grille);
-
-            // Demander au joueur une ligne et une colonne
+            
             System.out.print("Entrez le numero de la ligne : ");
-            int ligne = scanner.nextInt();
+                int ligne = scanner.nextInt();
             System.out.print("Entrez le numero de la colonne : ");
-            int colonne = scanner.nextInt();
+                int colonne = scanner.nextInt();
 
             // Vérifier si les coordonnées sont valides
-            if (ligne < 0 || ligne >= grille.nbLignes || colonne < 0 || colonne >= grille.nbColonnes) {
+            do  
+            {
                 System.out.println("Coordonnees invalides ! Veuillez reessayer.");
-                continue;
-            }
-
+                // Demander au joueur une ligne et une colonne
+                System.out.print("Entrez le numero de la ligne : ");
+                ligne = scanner.nextInt();
+                System.out.print("Entrez le numero de la colonne : ");
+                colonne = scanner.nextInt();
+            } while (ligne < 0 || ligne >= grille.nbLignes || colonne < 0 || colonne >= grille.nbColonnes);
+            
+            grille = new GrilleDeJeu(ligne, colonne);
+            
             // Activer la cellule sélectionnée et ses voisines
             System.out.println("Activation de la cellule et de ses voisines...");
             
