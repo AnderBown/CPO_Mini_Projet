@@ -11,29 +11,7 @@ import java.util.Scanner;
  * @author AnderBown
  */
 public class Partie {
-    /** DEMANDE LES VARIABLES UTILISATEURS LIGNE: x COL: J
-     * 
-     */
-/*int x;  //choix de lutiilsateur 
-int y;  //choix de lutiilsateur 
-int maxX;   // choix de lutiilsateur Valeur maximale de x/ ou encore valeur max de la taille du tableau
-int maxY;   // choix de lutiilsateur Valeur maximale de x/ ou encore valeur max de la taille du tableau
-GrilleDeJeu grille;
 
-// Vérification des bornes de x
-    public void lancerPartie(){
-    if (x >= 2 && x <= maxX ) {
-        for (int i = x - 1; i <= x + 1; i++) { //boucle pour les changements
-            for (int j = y - 1; j <= y + 1; j++) {
-                grille.matriceCellules[i][j].activerCellule(); //active la cellule demandee
-                System.out.println("Valeur de i : " + i); //sert a rien
-            }
-        }
-    } else {
-        System.out.println("x est hors des limites autorisees (2 < x < " + maxX + ").");
-    }
-    }
-    */
     private GrilleDeJeu grille; // Référence à la grille de jeu
     private int nbCoups;        // Nombre de coups joués
 
@@ -54,16 +32,6 @@ GrilleDeJeu grille;
     // Méthode pour lancer la partie
     public void lancerPartie() {
         Scanner scanner = new Scanner(System.in);
-        
-        // Demander à l'utilisateur la taille de la grille
-        System.out.print("Entrez le nombre de lignes de la grille : ");
-        int nbLignes = scanner.nextInt();
-        System.out.print("Entrez le nombre de colonnes de la grille : ");
-        int nbColonnes = scanner.nextInt();
-
-        // Créer une nouvelle grille avec les dimensions données
-        grille = new GrilleDeJeu(nbLignes, nbColonnes);
-        
         System.out.println("Bienvenue dans le jeu LightOff !");
         initialiserPartie();
 
@@ -86,24 +54,14 @@ GrilleDeJeu grille;
 
             // Activer la cellule sélectionnée et ses voisines
             System.out.println("Activation de la cellule et de ses voisines...");
-            
-            /*
-            for (int i = Math.max(0, ligne - 1); i <= Math.min(grille.nbLignes - 1, ligne + 1); i++) {
-                for (int j = Math.max(0, colonne - 1); j <= Math.min(grille.nbColonnes - 1, colonne + 1); j++) {
-                    grille.matriceCellules[i][j].activerCellule();
-                }
-            }
-            */
             for (int i = Math.max(0, ligne - 1); i <= Math.min(grille.nbLignes - 1, ligne + 1); i++) {
                 grille.matriceCellules[i][colonne].activerCellule();
             }
             for (int j = Math.max(0, colonne - 1); j <= Math.min(grille.nbColonnes - 1, colonne + 1); j++) {
                 grille.matriceCellules[ligne][j].activerCellule();
             }
-            
             grille.matriceCellules[ligne][colonne].activerCellule();
-            
-            
+
             // Incrémenter le compteur de coups
             nbCoups++;
             System.out.println("Nombre de coups joues : " + nbCoups);
@@ -114,4 +72,4 @@ GrilleDeJeu grille;
         System.out.println("Nombre total de coups necessaires : " + nbCoups);
         scanner.close();
     }
- }  
+}

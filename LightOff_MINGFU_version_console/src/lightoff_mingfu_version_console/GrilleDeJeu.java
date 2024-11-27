@@ -58,11 +58,26 @@ public class GrilleDeJeu {
     }
 
     // Mélanger la grille aléatoirement
+
     public void melangerMatriceAleatoirement(int nbTours) {
-        eteindreToutesLesCellules();
+        eteindreToutesLesCellules(); 
+        Random random = new Random();
         for (int i = 0; i < nbTours; i++) {
-            activerLigneColonneOuDiagonaleAleatoire();
+            int ligne = random.nextInt(nbLignes);
+            int colonne = random.nextInt(nbColonnes);
+            declencherClique(ligne, colonne);
         }
+    }
+
+    
+    private void declencherClique(int ligne, int colonne) {
+        
+        matriceCellules[ligne][colonne].activerCellule();
+        
+        if (ligne > 0) matriceCellules[ligne - 1][colonne].activerCellule(); // 上
+        if (ligne < nbLignes - 1) matriceCellules[ligne + 1][colonne].activerCellule(); // 下
+        if (colonne > 0) matriceCellules[ligne][colonne - 1].activerCellule(); // 左
+        if (colonne < nbColonnes - 1) matriceCellules[ligne][colonne + 1].activerCellule(); // 右
     }
 
     // Activer une ligne spécifique
