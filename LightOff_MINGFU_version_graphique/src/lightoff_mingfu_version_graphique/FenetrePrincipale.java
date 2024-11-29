@@ -55,9 +55,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                         for (int i1=0; i1 < nbLignes; i1++) {
                             for (int j1=0; j1 < nbColonnes; j1++ )
                         if (grille.matriceCellules[i1][j1].getEtat()) {
-                            boutons[i1][j1].setBackground(java.awt.Color.GREEN);  // Changez la couleur en rouge si "X"
+                            boutons[i1][j1].setBackground(java.awt.Color.YELLOW);  // Changez la couleur en rouge si "X"
                         } else {
-                            boutons[i1][j1].setBackground(java.awt.Color.YELLOW);  // Couleur par défaut
+                            boutons[i1][j1].setBackground(java.awt.Color.BLACK);  // Couleur par défaut
                         }
                         }
                     }
@@ -82,11 +82,21 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        PanneauGrille = new javax.swing.JPanel();
         btnLigne0 = new javax.swing.JButton();
+        PanneauGrille = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+
+        btnLigne0.setText("jButton1");
+        btnLigne0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLigne0ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PanneauGrille.setBackground(new java.awt.Color(51, 204, 255));
         PanneauGrille.setPreferredSize(new java.awt.Dimension(400, 400));
@@ -95,22 +105,27 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanneauGrille.setLayout(PanneauGrilleLayout);
         PanneauGrilleLayout.setHorizontalGroup(
             PanneauGrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 520, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         PanneauGrilleLayout.setVerticalGroup(
             PanneauGrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
+            .addGap(0, 404, Short.MAX_VALUE)
         );
 
-        getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 520, 390));
+        getContentPane().add(PanneauGrille, java.awt.BorderLayout.LINE_END);
 
-        btnLigne0.setText("jButton1");
-        btnLigne0.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLigne0ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnLigne0, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
+        jLabel1.setText("                                                            LIGHTS OFF");
+        getContentPane().add(jLabel1, java.awt.BorderLayout.PAGE_START);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setText("Nombre de tours");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
+
+        jLabel3.setText("jLabel3");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -157,5 +172,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanneauGrille;
     private javax.swing.JButton btnLigne0;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
