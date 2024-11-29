@@ -5,7 +5,11 @@
 package lightoff_mingfu_version_graphique;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import lightoff_mingfu_version_graphique.Partie.*; // Importation de GrilleDeJeu
+
 
 /**
  *
@@ -13,10 +17,18 @@ import javax.swing.JButton;
  */
 public class FenetrePrincipale extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FenetrePrincipale
-     */
+    // Variables de la grille
+    private int nbLignes = 10;
+    private int nbColonnes = 10;
+    private JButton[][] boutons;  // Tableau pour stocker les boutons représentant la grille
+
+    private GrilleDeJeu grille;
+    
+
+    
     public FenetrePrincipale() {
+    grille = new GrilleDeJeu(nbLignes, nbColonnes);
+    boutons = new JButton[nbLignes][nbColonnes]; // Initialize the boutons array
         initComponents();
         int nbLignes = 10;
         int nbColonnes = 10;
@@ -24,6 +36,17 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         for (int i=0; i < nbLignes; i++) {
             for (int j=0; j < nbColonnes; j++ ) {
             JButton bouton_cellule = new JButton(); // création d'un bouton
+             boutons[i][j] = bouton_cellule; // Stockage du bouton dans le tableau
+             // Ajout de l'écouteur d'événement pour chaque bouton
+                final int ligne = i;
+                final int colonne = j;
+                bouton_cellule.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        // Appel de la méthode activerCases lorsqu'une case est sélectionnée
+                        grille.activerEntourageCellules(grille, ligne, colonne);
+                    }
+                });
             PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
             }
         }
