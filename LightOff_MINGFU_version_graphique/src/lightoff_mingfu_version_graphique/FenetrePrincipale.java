@@ -51,10 +51,14 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                         // Appel de la méthode activerCases lorsqu'une case est sélectionnée
                         grille.activerEntourageCellules(grille, ligne, colonne);
                         // Ajout dans l'écouteur d'événements
-                        if (grille.matriceCellules[ligne][colonne].getEtat()) {
-                            bouton_cellule.setBackground(java.awt.Color.RED);  // Changez la couleur en rouge si "X"
+                        //Actualisation de toutes les cases du tableau
+                        for (int i1=0; i1 < nbLignes; i1++) {
+                            for (int j1=0; j1 < nbColonnes; j1++ )
+                        if (grille.matriceCellules[i1][j1].getEtat()) {
+                            boutons[i1][j1].setBackground(java.awt.Color.RED);  // Changez la couleur en rouge si "X"
                         } else {
-                            bouton_cellule.setBackground(java.awt.Color.GREEN);  // Couleur par défaut
+                            boutons[i1][j1].setBackground(java.awt.Color.GREEN);  // Couleur par défaut
+                        }
                         }
                     }
                 });
