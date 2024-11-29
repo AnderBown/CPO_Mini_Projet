@@ -4,6 +4,7 @@
  */
 package lightoff_mingfu_version_graphique;
 
+
 /**
  *
  * @author AnderBown
@@ -18,6 +19,7 @@ public class CelluleLumineuse {
     
     public void activerCellule() {
         this.etat = !this.etat;
+        
     }
     
     public void eteindreCellule() {
