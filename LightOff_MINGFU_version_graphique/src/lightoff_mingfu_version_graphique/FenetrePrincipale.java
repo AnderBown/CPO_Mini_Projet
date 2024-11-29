@@ -8,6 +8,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import lightoff_mingfu_version_graphique.GrilleDeJeu;
 import lightoff_mingfu_version_graphique.Partie.*; // Importation de GrilleDeJeu
 
 
@@ -18,20 +19,24 @@ import lightoff_mingfu_version_graphique.Partie.*; // Importation de GrilleDeJeu
 public class FenetrePrincipale extends javax.swing.JFrame {
 
     // Variables de la grille
-    private int nbLignes = 10;
-    private int nbColonnes = 10;
-    private JButton[][] boutons;  // Tableau pour stocker les boutons représentant la grille
+    int nbLignes = 10;
+    int nbColonnes = 10;
+    JButton[][] boutons;  // Tableau pour stocker les boutons représentant la grille
 
-    private GrilleDeJeu grille;
-    
+    GrilleDeJeu grille;
+    int nbCoups; 
 
     
     public FenetrePrincipale() {
-    grille = new GrilleDeJeu(nbLignes, nbColonnes);
+    this.grille = new GrilleDeJeu(nbLignes, nbColonnes);
+    
+    
+    grille.eteindreToutesLesCellules();
+    grille.melangerMatriceAleatoirement(10);
+    
+    
     boutons = new JButton[nbLignes][nbColonnes]; // Initialize the boutons array
         initComponents();
-        int nbLignes = 10;
-        int nbColonnes = 10;
         PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
         for (int i=0; i < nbLignes; i++) {
             for (int j=0; j < nbColonnes; j++ ) {
