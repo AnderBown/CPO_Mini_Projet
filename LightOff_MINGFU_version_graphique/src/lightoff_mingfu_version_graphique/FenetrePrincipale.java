@@ -40,7 +40,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
         for (int i=0; i < nbLignes; i++) {
             for (int j=0; j < nbColonnes; j++ ) {
-            JButton bouton_cellule = new JButton(); // création d'un bouton
+            CelluleGraphique bouton_cellule = new CelluleGraphique(grille.matriceCellules[i][j], 36, 36); // création d'un bouton
              boutons[i][j] = bouton_cellule; // Stockage du bouton dans le tableau
              // Ajout de l'écouteur d'événement pour chaque bouton
                 final int ligne = i;
