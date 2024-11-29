@@ -55,17 +55,17 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                         for (int i1=0; i1 < nbLignes; i1++) {
                             for (int j1=0; j1 < nbColonnes; j1++ )
                         if (grille.matriceCellules[i1][j1].getEtat()) {
-                            boutons[i1][j1].setBackground(java.awt.Color.RED);  // Changez la couleur en rouge si "X"
+                            boutons[i1][j1].setBackground(java.awt.Color.GREEN);  // Changez la couleur en rouge si "X"
                         } else {
-                            boutons[i1][j1].setBackground(java.awt.Color.GREEN);  // Couleur par défaut
+                            boutons[i1][j1].setBackground(java.awt.Color.YELLOW);  // Couleur par défaut
                         }
                         }
                     }
                 });
             if (grille.matriceCellules[i][j].getEtat()) {
-                    bouton_cellule.setBackground(java.awt.Color.RED);  // La couleur pour "X"
+                    bouton_cellule.setBackground(java.awt.Color.GREEN);  // La couleur pour "X"
                 } else {
-                    bouton_cellule.setBackground(java.awt.Color.GREEN);  // Couleur par défaut
+                    bouton_cellule.setBackground(java.awt.Color.RED);  // Couleur par défaut
                 }
             PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
             }

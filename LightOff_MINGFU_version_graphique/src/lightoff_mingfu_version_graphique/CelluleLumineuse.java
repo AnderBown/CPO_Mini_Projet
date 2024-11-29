@@ -34,7 +34,7 @@ public class CelluleLumineuse {
 
     @Override
     public String toString() {
-        return this.etat ? "X" : "O";
+        return this.etat ? "O" : "X";
     }
 
 }
