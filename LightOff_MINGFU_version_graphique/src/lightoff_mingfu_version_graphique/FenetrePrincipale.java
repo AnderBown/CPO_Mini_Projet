@@ -28,7 +28,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     JButton[][] boutons;  // Tableau pour stocker les boutons représentant la grille
 
     GrilleDeJeu grille;
-    int nbCoups; 
+    int nbCoups = 0; 
 
     
     public FenetrePrincipale() {
@@ -37,10 +37,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     
     grille.eteindreToutesLesCellules();
     //grille.melangerMatriceAleatoirement(10);
-  
-        
-    
-    
+   
     
     boutons = new JButton[nbLignes][nbColonnes]; // Initialize the boutons array
         initComponents();
@@ -57,6 +54,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                     public void actionPerformed(ActionEvent e) {
                         // Appel de la méthode activerCases lorsqu'une case est sélectionnée
                         grille.activerEntourageCellules(grille, ligne, colonne);
+                        
+                        nbCoups++;
+                        labelNbCoups.setText(Integer.toString(nbCoups));
                         // Ajout dans l'écouteur d'événements
                         //Actualisation de toutes les cases du tableau
                         for (int i1=0; i1 < nbLignes; i1++) {
@@ -79,7 +79,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         }
       
     }
-
+            
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -94,9 +94,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         Difficulty = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        labelNbCoups = new javax.swing.JLabel();
 
         btnLigne0.setText("jButton1");
         btnLigne0.addActionListener(new java.awt.event.ActionListener() {
@@ -131,9 +131,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         jLabel2.setText("Nombre de tours");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
 
-        jLabel3.setText("jLabel3");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
-
         Difficulty.setMinimumSize(new java.awt.Dimension(100, 100));
         Difficulty.setPreferredSize(new java.awt.Dimension(100, 50));
         Difficulty.addActionListener(new java.awt.event.ActionListener() {
@@ -145,6 +142,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         jLabel4.setText("Randomizer");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
+        jPanel1.add(labelNbCoups, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -208,8 +206,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JButton btnLigne0;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel labelNbCoups;
     // End of variables declaration//GEN-END:variables
 }
