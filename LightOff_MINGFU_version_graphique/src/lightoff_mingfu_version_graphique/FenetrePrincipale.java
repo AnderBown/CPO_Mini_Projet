@@ -84,6 +84,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                             String endtext = "Vous avez réussi! " + nbCoups + " coups. Félicitations!";
                             JOptionPane.showMessageDialog(null, endtext, "Fin de la partie", JOptionPane.INFORMATION_MESSAGE);
                         }
+                        
                     }
                     
                 });
