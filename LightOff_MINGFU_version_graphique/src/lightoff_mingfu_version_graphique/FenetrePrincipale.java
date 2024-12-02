@@ -80,7 +80,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                             }
                         }
                         if (toutesLesLampesEteintes()) {
-                            JOptionPane.showMessageDialog(null, "Vous avez réussi!", "Félicitations", JOptionPane.INFORMATION_MESSAGE);
+                            // Add a space between the number of moves and the congratulations message
+                            String endtext = "Vous avez réussi! " + nbCoups + " coups. Félicitations!";
+                            JOptionPane.showMessageDialog(null, endtext, "Fin de la partie", JOptionPane.INFORMATION_MESSAGE);
                         }
                     }
                     
