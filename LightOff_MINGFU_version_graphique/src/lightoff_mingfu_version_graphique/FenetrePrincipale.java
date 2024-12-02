@@ -25,6 +25,18 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     // Variables de la grille
     int nbLignes = 10;
     int nbColonnes = 10;
+    
+    private boolean toutesLesLampesEteintes() {
+    for (int i = 0; i < nbLignes; i++) {
+        for (int j = 0; j < nbColonnes; j++) {
+            if (grille.matriceCellules[i][j].getEtat()) {  // Check if any cell is on
+                return false;  // Return false if at least one light is on
+            }
+        }
+    }
+    return true;  // All lights are off
+}
+
     JButton[][] boutons;  // Tableau pour stocker les boutons représentant la grille
 
     GrilleDeJeu grille;
@@ -59,15 +71,19 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                         labelNbCoups.setText(Integer.toString(nbCoups));
                         // Ajout dans l'écouteur d'événements
                         //Actualisation de toutes les cases du tableau
-                        for (int i1=0; i1 < nbLignes; i1++) {
-                            for (int j1=0; j1 < nbColonnes; j1++ )
-                        if (grille.matriceCellules[i1][j1].getEtat()) {
-                            boutons[i1][j1].setBackground(java.awt.Color.YELLOW);  // Changez la couleur en rouge si "X"
-                        } else {
-                            boutons[i1][j1].setBackground(java.awt.Color.BLACK);  // Couleur par défaut
+                            for (int i1=0; i1 < nbLignes; i1++) {
+                                for (int j1=0; j1 < nbColonnes; j1++ )
+                            if (grille.matriceCellules[i1][j1].getEtat()) {
+                                boutons[i1][j1].setBackground(java.awt.Color.YELLOW);  // Changez la couleur en rouge si "X"
+                            } else {
+                                boutons[i1][j1].setBackground(java.awt.Color.BLACK);  // Couleur par défaut
+                            }
                         }
+                        if (toutesLesLampesEteintes()) {
+                            JOptionPane.showMessageDialog(null, "Vous avez réussi!", "Félicitations", JOptionPane.INFORMATION_MESSAGE);
                         }
                     }
+                    
                 });
             if (grille.matriceCellules[i][j].getEtat()) {
                     bouton_cellule.setBackground(java.awt.Color.GREEN);  // La couleur pour "X"
