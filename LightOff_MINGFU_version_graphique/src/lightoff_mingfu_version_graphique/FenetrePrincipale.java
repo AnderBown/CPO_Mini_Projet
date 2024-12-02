@@ -42,13 +42,16 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     GrilleDeJeu grille;
     int nbCoups = 0; 
 
-    
     public FenetrePrincipale() {
+        this(0); 
+    }
+
+    public FenetrePrincipale(int difficulty) {
     this.grille = new GrilleDeJeu(nbLignes, nbColonnes);
     
     
     grille.eteindreToutesLesCellules();
-    //grille.melangerMatriceAleatoirement(10);
+    grille.melangerMatriceAleatoirement(difficulty);
    
     
     boutons = new JButton[nbLignes][nbColonnes]; // Initialize the boutons array
@@ -70,7 +73,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                         nbCoups++;
                         labelNbCoups.setText(Integer.toString(nbCoups));
                         // Ajout dans l'écouteur d'événements
-                        //Actualisation de toutes les cases du tableau
+                        //Actualisation de toutes les cases du tableau                       
                             for (int i1=0; i1 < nbLignes; i1++) {
                                 for (int j1=0; j1 < nbColonnes; j1++ )
                             if (grille.matriceCellules[i1][j1].getEtat()) {
@@ -78,11 +81,12 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                             } else {
                                 boutons[i1][j1].setBackground(java.awt.Color.BLACK);  // Couleur par défaut
                             }
-                        }
+                        }                        
                         if (toutesLesLampesEteintes()) {
                             // Add a space between the number of moves and the congratulations message
                             String endtext = "Vous avez réussi! " + nbCoups + " coups. Félicitations!";
                             JOptionPane.showMessageDialog(null, endtext, "Fin de la partie", JOptionPane.INFORMATION_MESSAGE);
+                            nbCoups = 0;
                         }
                         
                     }
@@ -142,9 +146,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         getContentPane().add(PanneauGrille, java.awt.BorderLayout.LINE_END);
 
+        jLabel1.setBackground(new java.awt.Color(51, 255, 0));
         jLabel1.setText("                                                            LIGHTS OFF");
         getContentPane().add(jLabel1, java.awt.BorderLayout.PAGE_START);
 
+        jPanel1.setBackground(new java.awt.Color(153, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("Nombre de tours");
@@ -213,10 +219,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FenetrePrincipale().setVisible(true);
-            }
-        });
+        public void run() {
+            new difficulte().setVisible(true);
+        }
+    });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
