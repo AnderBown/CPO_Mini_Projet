@@ -10,6 +10,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import lightoff_mingfu_version_graphique.GrilleDeJeu;
 import lightoff_mingfu_version_graphique.Partie.*; // Importation de GrilleDeJeu
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 /**
@@ -32,7 +36,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     
     
     grille.eteindreToutesLesCellules();
-    grille.melangerMatriceAleatoirement(10);
+    //grille.melangerMatriceAleatoirement(10);
+  
+        
+    
     
     
     boutons = new JButton[nbLignes][nbColonnes]; // Initialize the boutons array
@@ -70,7 +77,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
             }
         }
-
+      
     }
 
     /**
@@ -88,6 +95,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        Difficulty = new javax.swing.JTextField();
 
         btnLigne0.setText("jButton1");
         btnLigne0.addActionListener(new java.awt.event.ActionListener() {
@@ -125,6 +134,21 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         jLabel3.setText("jLabel3");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, -1, -1));
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+
+        Difficulty.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DifficultyActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Difficulty, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
@@ -133,6 +157,22 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private void btnLigne0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLigne0ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLigne0ActionPerformed
+
+    private void DifficultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DifficultyActionPerformed
+        // Get the text from the input field (assumed to be named difficultyField)
+        String inputText = Difficulty.getText();  // Corrected line
+
+        try {
+            int difficulty = Integer.parseInt(inputText); // Convert the input to an integer
+            grille.melangerMatriceAleatoirement(difficulty); // Pass the difficulty to the method
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Veuillez entrer un nombre valide.");
+        }
+    }//GEN-LAST:event_DifficultyActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,8 +210,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Difficulty;
     private javax.swing.JPanel PanneauGrille;
     private javax.swing.JButton btnLigne0;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
