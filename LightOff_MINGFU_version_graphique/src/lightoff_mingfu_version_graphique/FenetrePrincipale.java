@@ -47,20 +47,20 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     }
 
     public FenetrePrincipale(int difficulty) {
-    this.grille = new GrilleDeJeu(nbLignes, nbColonnes);
+        this.grille = new GrilleDeJeu(nbLignes, nbColonnes);
+
+        grille.melangerMatriceAleatoirement(difficulty);   
     
-    
-    grille.eteindreToutesLesCellules();
-    grille.melangerMatriceAleatoirement(difficulty);
-   
-    
-    boutons = new JButton[nbLignes][nbColonnes]; // Initialize the boutons array
+        boutons = new JButton[nbLignes][nbColonnes]; // Initialize the boutons array
         initComponents();
         PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
         for (int i=0; i < nbLignes; i++) {
             for (int j=0; j < nbColonnes; j++ ) {
             CelluleGraphique bouton_cellule = new CelluleGraphique(grille.matriceCellules[i][j], 36, 36); // création d'un bouton
-             boutons[i][j] = bouton_cellule; // Stockage du bouton dans le tableau
+            boutons[i][j] = bouton_cellule; // Stockage du bouton dans le tableau
+
+            PanneauGrille.add(bouton_cellule);
+            
              // Ajout de l'écouteur d'événement pour chaque bouton
                 final int ligne = i;
                 final int colonne = j;
@@ -72,22 +72,18 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                         
                         nbCoups++;
                         labelNbCoups.setText(Integer.toString(nbCoups));
+                        
                         // Ajout dans l'écouteur d'événements
                         //Actualisation de toutes les cases du tableau                       
-                            for (int i1=0; i1 < nbLignes; i1++) {
-                                for (int j1=0; j1 < nbColonnes; j1++ )
-                            if (grille.matriceCellules[i1][j1].getEtat()) {
-                                boutons[i1][j1].setBackground(java.awt.Color.YELLOW);  // Changez la couleur en rouge si "X"
-                            } else {
-                                boutons[i1][j1].setBackground(java.awt.Color.BLACK);  // Couleur par défaut
+                            for (int i=0; i < nbLignes; i++) {
+                                for (int j=0; j < nbColonnes; j++ )
+                                    if (grille.matriceCellules[i][j].getEtat()) {
+                                        boutons[i][j].setBackground(java.awt.Color.YELLOW);  // Changez la couleur en rouge si "X"
+                                    } else {
+                                        boutons[i][j].setBackground(java.awt.Color.BLACK);  // Couleur par défaut
+                                }
                             }
-                        }  /*                      
-                        if (toutesLesLampesEteintes()) {
-                            // Add a space between the number of moves and the congratulations message
-                            String endtext = "Vous avez réussi! " + nbCoups + " coups. Félicitations!";
-                            JOptionPane.showMessageDialog(null, endtext, "Fin de la partie", JOptionPane.INFORMATION_MESSAGE);
-                            nbCoups = 0;
-                        }*/
+                            
                         if (toutesLesLampesEteintes()) {
                             
                             JPanel endGamePanel = new JPanel(new GridLayout(2, 1));
@@ -119,21 +115,17 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                             );
 
                             nbCoups = 0; 
-                        }
-
-                        
-                    }
-                    
+                        }                   
+                    }          
                 });
             if (grille.matriceCellules[i][j].getEtat()) {
-                    bouton_cellule.setBackground(java.awt.Color.GREEN);  // La couleur pour "X"
+                    bouton_cellule.setBackground(java.awt.Color.YELLOW);  // La couleur pour "X"
                 } else {
-                    bouton_cellule.setBackground(java.awt.Color.RED);  // Couleur par défaut
+                    bouton_cellule.setBackground(java.awt.Color.BLACK);  // Couleur par défaut
                 }
             PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
             }
-        }
-      
+        }  
     }
             
     /**
@@ -145,19 +137,11 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnLigne0 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         labelNbCoups = new javax.swing.JLabel();
         PanneauGrille = new javax.swing.JPanel();
-
-        btnLigne0.setText("jButton1");
-        btnLigne0.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLigne0ActionPerformed(evt);
-            }
-        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -194,10 +178,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnLigne0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLigne0ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnLigne0ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -236,7 +216,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanneauGrille;
-    private javax.swing.JButton btnLigne0;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
