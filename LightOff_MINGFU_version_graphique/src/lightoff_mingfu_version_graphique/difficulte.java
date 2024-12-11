@@ -34,6 +34,7 @@ public class difficulte extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        ConfirmButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
@@ -81,6 +82,13 @@ public class difficulte extends javax.swing.JFrame {
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
+        ConfirmButton.setText("OK");
+        ConfirmButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConfirmButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -95,7 +103,10 @@ public class difficulte extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(193, 193, 193)
-                        .addComponent(Difficulty, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Difficulty, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(210, 210, 210)
+                        .addComponent(ConfirmButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -106,7 +117,9 @@ public class difficulte extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Difficulty, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(ConfirmButton)
+                .addGap(20, 20, 20))
         );
 
         getContentPane().add(jPanel1);
@@ -115,7 +128,10 @@ public class difficulte extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void DifficultyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DifficultyActionPerformed
-                                                  
+  
+    }//GEN-LAST:event_DifficultyActionPerformed
+
+    private void ConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmButtonActionPerformed
         String inputText = Difficulty.getText();
 
         try {
@@ -127,9 +143,8 @@ public class difficulte extends javax.swing.JFrame {
             this.dispose(); 
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Veuillez entrer un nombre valide.");
-        }                                          
-
-    }//GEN-LAST:event_DifficultyActionPerformed
+        }
+    }//GEN-LAST:event_ConfirmButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,6 +182,7 @@ public class difficulte extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ConfirmButton;
     private javax.swing.JTextField Difficulty;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
