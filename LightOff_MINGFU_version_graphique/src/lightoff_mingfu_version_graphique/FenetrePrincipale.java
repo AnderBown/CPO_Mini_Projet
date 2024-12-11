@@ -48,7 +48,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
     public FenetrePrincipale(int difficulty) {
         this.grille = new GrilleDeJeu(nbLignes, nbColonnes);
-
+        grille.eteindreToutesLesCellules();
         grille.melangerMatriceAleatoirement(difficulty);   
     
         boutons = new JButton[nbLignes][nbColonnes]; // Initialize the boutons array
