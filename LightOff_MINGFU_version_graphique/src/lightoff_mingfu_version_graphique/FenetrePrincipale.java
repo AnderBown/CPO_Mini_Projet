@@ -172,8 +172,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         jLabel2.setText("Nombre de tours");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 260, -1, -1));
-
-        labelNbCoups.setText("1");
         jPanel1.add(labelNbCoups, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, -1, -1));
 
         PanneauGrille.setBackground(new java.awt.Color(51, 204, 255));
