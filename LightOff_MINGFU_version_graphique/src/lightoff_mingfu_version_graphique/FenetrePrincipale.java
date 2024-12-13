@@ -88,13 +88,20 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                                 public void actionPerformed(ActionEvent e) {
                                     
                                     dispose();
-                                    
                                     new difficulte().setVisible(true);
                                 }
                             });
                             endGamePanel.add(backToMenuButton);
+                            setLocationRelativeTo(null); 
+                            JButton okButton = new JButton("OK");
+                            okButton.addActionListener(new ActionListener() {
+                                @Override
+                                public void actionPerformed(ActionEvent e) {
+                                    System.exit(0);  // Ferme la boîte de dialogue de fin de jeu
+                                }
+                            });
+                            endGamePanel.add(okButton);
 
-                            
                             JOptionPane.showMessageDialog(
                                 null, 
                                 endGamePanel, 
@@ -109,7 +116,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             PanneauGrille.add(bouton_cellule); // ajout au Jpanel PanneauGrille
             }
         }  
-    }
+    setLocationRelativeTo(null); }
+    
             
     /**
      * This method is called from within the constructor to initialize the form.
@@ -193,6 +201,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
         public void run() {
             new difficulte().setVisible(true);
+            
         }
     });
     }
