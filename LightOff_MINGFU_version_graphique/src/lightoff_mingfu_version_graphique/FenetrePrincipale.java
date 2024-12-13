@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package lightoff_mingfu_version_graphique;
 
 import java.awt.GridLayout;
@@ -71,18 +67,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                         labelNbCoups.setText(Integer.toString(nbCoups));
                         
                         // Ajout dans l'écouteur d'événements
-                        //Actualisation de toutes les cases du tableau                       
-                            for (int i=0; i < nbLignes; i++) {
-                                for (int j=0; j < nbColonnes; j++ )
-                                {
-                                    if (grille.matriceCellules[i][j].getEtat()) {
-                                        boutons[i][j].setBackground(java.awt.Color.ORANGE);  // Changez la couleur en rouge si "X"
-                                    } else if (!grille.matriceCellules[i][j].getEtat()){
-                                        boutons[i][j].setBackground(java.awt.Color.BLACK);  // Couleur par défaut
-                                }
-                                }
-                            }
-                            
+                        //Actualisation de toutes les cases du tableau
+                        PanneauGrille.revalidate();   // Force la mise à jour de la mise en page
+                        PanneauGrille.repaint();      // Force le redessin de l'interface
+
                         if (toutesLesLampesEteintes()) {
                             
                             JPanel endGamePanel = new JPanel(new GridLayout(2, 1));

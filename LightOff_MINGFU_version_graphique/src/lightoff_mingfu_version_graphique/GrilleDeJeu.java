@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package lightoff_mingfu_version_graphique;
 
 import java.util.Random;
@@ -63,7 +59,6 @@ public class GrilleDeJeu {
     
     public void activerEntourageCellules(GrilleDeJeu grille, int nbLignes, int nbColonnes) {
     // Activer la cellule sélectionnée et ses voisines
-            System.out.println("Activation de la cellule et de ses voisines...");
             for (int i = Math.max(0, nbLignes - 1); i <= Math.min(grille.nbLignes - 1, nbLignes + 1); i++) {
                 grille.matriceCellules[i][nbColonnes].activerCellule();
             }
@@ -71,7 +66,6 @@ public class GrilleDeJeu {
                 grille.matriceCellules[nbLignes][j].activerCellule();
             }
             grille.matriceCellules[nbLignes][nbColonnes].activerCellule();
-            System.out.println(grille);
     }
     
     // Vérifier si toutes les cellules sont éteintes
