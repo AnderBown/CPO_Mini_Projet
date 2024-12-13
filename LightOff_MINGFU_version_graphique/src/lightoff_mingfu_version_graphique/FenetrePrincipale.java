@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import lightoff_mingfu_version_graphique.GrilleDeJeu;
-import lightoff_mingfu_version_graphique.Partie.*; // Importation de GrilleDeJeu
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -58,9 +57,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             for (int j=0; j < nbColonnes; j++ ) {
             CelluleGraphique bouton_cellule = new CelluleGraphique(grille.matriceCellules[i][j], 36, 36); // création d'un bouton
             boutons[i][j] = bouton_cellule; // Stockage du bouton dans le tableau
-
             PanneauGrille.add(bouton_cellule);
-            
+             boutons[i][j].setBackground(java.awt.Color.GREEN);
              // Ajout de l'écouteur d'événement pour chaque bouton
                 final int ligne = i;
                 final int colonne = j;
@@ -69,7 +67,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                     public void actionPerformed(ActionEvent e) {
                         // Appel de la méthode activerCases lorsqu'une case est sélectionnée
                         grille.activerEntourageCellules(grille, ligne, colonne);
-                        
                         nbCoups++;
                         labelNbCoups.setText(Integer.toString(nbCoups));
                         
@@ -77,10 +74,12 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                         //Actualisation de toutes les cases du tableau                       
                             for (int i=0; i < nbLignes; i++) {
                                 for (int j=0; j < nbColonnes; j++ )
+                                {
                                     if (grille.matriceCellules[i][j].getEtat()) {
                                         boutons[i][j].setBackground(java.awt.Color.ORANGE);  // Changez la couleur en rouge si "X"
                                     } else if (!grille.matriceCellules[i][j].getEtat()){
                                         boutons[i][j].setBackground(java.awt.Color.BLACK);  // Couleur par défaut
+                                }
                                 }
                             }
                             
@@ -92,6 +91,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                             JLabel messageLabel = new JLabel("Vous avez réussi! " + nbCoups + " coups. Félicitations!");
                             messageLabel.setHorizontalAlignment(SwingConstants.CENTER);
                             endGamePanel.add(messageLabel);
+                            dispose();
 
                             
                             JButton backToMenuButton = new JButton("Recommencer");
@@ -113,7 +113,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                                 "Fin de la partie", 
                                 JOptionPane.INFORMATION_MESSAGE
                             );
-
                             nbCoups = 0; 
                         }                   
                     }  
