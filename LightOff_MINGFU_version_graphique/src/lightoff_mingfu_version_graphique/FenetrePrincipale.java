@@ -72,44 +72,50 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                         PanneauGrille.repaint();      // Force le redessin de l'interface
 
                         if (toutesLesLampesEteintes()) {
-                            
-                            JPanel endGamePanel = new JPanel(new GridLayout(2, 1));
+                            JPanel endGamePanel = new JPanel();
+                            endGamePanel.setLayout(new BoxLayout(endGamePanel, BoxLayout.Y_AXIS));
 
-                            
                             JLabel messageLabel = new JLabel("Vous avez réussi! " + nbCoups + " coups. Félicitations!");
-                            messageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+                            messageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
                             endGamePanel.add(messageLabel);
-                            dispose();
+                            endGamePanel.add(Box.createRigidArea(new Dimension(0, 20)));
 
-                            
                             JButton backToMenuButton = new JButton("Recommencer");
+                            backToMenuButton.setAlignmentX(Component.CENTER_ALIGNMENT);
                             backToMenuButton.addActionListener(new ActionListener() {
                                 @Override
                                 public void actionPerformed(ActionEvent e) {
-                                    
+
+                                    Window window = SwingUtilities.getWindowAncestor(endGamePanel);
+                                    if (window != null) {
+                                        window.dispose();
+                                    }
+
                                     dispose();
+
                                     new difficulte().setVisible(true);
                                 }
                             });
                             endGamePanel.add(backToMenuButton);
-                            setLocationRelativeTo(null); 
+
                             JButton okButton = new JButton("OK");
+                            okButton.setAlignmentX(Component.CENTER_ALIGNMENT);
                             okButton.addActionListener(new ActionListener() {
                                 @Override
                                 public void actionPerformed(ActionEvent e) {
-                                    System.exit(0);  // Ferme la boîte de dialogue de fin de jeu
+                                    System.exit(0);  
                                 }
                             });
                             endGamePanel.add(okButton);
 
                             JOptionPane.showMessageDialog(
-                                null, 
-                                endGamePanel, 
-                                "Fin de la partie", 
+                                null,
+                                endGamePanel,
+                                "Fin de la partie",
                                 JOptionPane.INFORMATION_MESSAGE
                             );
-                            nbCoups = 0; 
-                        }                   
+                            nbCoups = 0;
+                        }
                     }  
                     
                 });
