@@ -13,6 +13,7 @@ public class difficulte extends javax.swing.JFrame {
      */
     public difficulte() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
